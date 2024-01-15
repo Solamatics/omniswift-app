@@ -240,11 +240,9 @@ export default function StickyHeadTable({ _, filters }:any) {
       </TableContainer>
     </Paper>
     
-   {showDoc && (
-        <div>
+   <div>
           <Document ref={pdfRef} data={studentData} />
         </div>
-      )}
     
   </> 
   );
