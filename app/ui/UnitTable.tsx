@@ -46,7 +46,7 @@ const rows = [
   createData('Gingerbread', 356, 16.0, 49, 3.9),
 ];
 
-export default function CustomizedTables({cummulatives}) {
+export default function CustomizedTables({cummulatives}: any) {
     console.log("Result Array :", cummulatives)
   return (
     <TableContainer style={{marginTop:"20px"}}>
@@ -64,13 +64,13 @@ export default function CustomizedTables({cummulatives}) {
         <TableBody>
           <StyledTableRow>
               <StyledTableCell component="th" scope="row">
-                {cummulatives?.unts}
+                {cummulatives.unts}
               </StyledTableCell>
-              <StyledTableCell align="right">{cummulatives?.untd}</StyledTableCell>
-              <StyledTableCell align="right">{cummulatives?.gpts}</StyledTableCell>
-              <StyledTableCell align="right">{cummulatives?.gptd}</StyledTableCell>
-              <StyledTableCell align="right">{cummulatives?.gpats}</StyledTableCell>
-              <StyledTableCell align="right">{cummulatives?.gpatd}</StyledTableCell>
+              <StyledTableCell align="right">{cummulatives.untd}</StyledTableCell>
+              <StyledTableCell align="right">{cummulatives.gpts}</StyledTableCell>
+              <StyledTableCell align="right">{cummulatives.gptd}</StyledTableCell>
+              <StyledTableCell align="right">{cummulatives.gpats}</StyledTableCell>
+              <StyledTableCell align="right">{cummulatives.gpatd}</StyledTableCell>
             </StyledTableRow>
         </TableBody>
       </Table>
