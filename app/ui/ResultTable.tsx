@@ -60,16 +60,16 @@ export default function CustomizedTables({results}:any) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {results?.map((result) => (
-            <StyledTableRow key={result?.coursecode}>
+          {results?.map((result: any) => (
+            <StyledTableRow key={result.coursecode}>
               <StyledTableCell component="th" scope="row">
-                {result?.coursecode}
+                {result.coursecode}
               </StyledTableCell>
-              <StyledTableCell align="right">{result?.coursecode}</StyledTableCell>
-              <StyledTableCell align="right">{result?.title}</StyledTableCell>
-              <StyledTableCell align="right">{result?.credit_unit}</StyledTableCell>
-              <StyledTableCell align="right">{result?.grade}</StyledTableCell>
-              <StyledTableCell align="right">{result?.total_point}</StyledTableCell>
+              <StyledTableCell align="right">{result.coursecode}</StyledTableCell>
+              <StyledTableCell align="right">{result.title}</StyledTableCell>
+              <StyledTableCell align="right">{result.credit_unit}</StyledTableCell>
+              <StyledTableCell align="right">{result.grade}</StyledTableCell>
+              <StyledTableCell align="right">{result.total_point}</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
