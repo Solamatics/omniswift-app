@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import { saveAs } from "file-saver";
 import { ApiAge, getAllData } from "@/app/lib/data";
-import Document from "@/app/doc/page";
+import Document from "@/app/ui/Document";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import axios from "axios"
@@ -99,13 +99,6 @@ function createData(
 ): Data {
   return { serialNumber, surname, firstname, age, gender, level, state };
 }
-
-const rows = [
-  createData(1, "Chukwuma", "James", 24, "Male", "100 level", "Ebonyi state"),
-  createData(2, "Chukwuma", "James", 24, "Male", "100 level", "Ebonyi state"),
-  createData(3, "Chukwuma", "James", 24, "Male", "100 level", "Ebonyi state"),
-];
-
 
 
 const useAsyncData = (getDataFunction: () => Promise<ApiAge[]>) => {
@@ -236,7 +229,10 @@ const handleDownload = async (rowId) => {
                         <Button
                           variant="contained"
                           style={{ background: "#46C35F", color: "#fff" }}
-                          onClick={() => handleDownload(row.id)}
+                          onClick={async (e) => {
+                               await fetchResult(row.id)
+                            downloadPDF(e)
+                          }}
                         >
                           Download Result
                         </Button>
