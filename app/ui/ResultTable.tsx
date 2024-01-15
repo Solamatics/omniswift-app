@@ -44,7 +44,7 @@ const rows = [
   createData('Gingerbread', 356, 16.0, 49, 3.9),
 ];
 
-export default function CustomizedTables({results}) {
+export default function CustomizedTables({results}:any) {
     console.log("Result object :", results)
   return (
     <TableContainer>
