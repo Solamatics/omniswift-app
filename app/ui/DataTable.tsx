@@ -191,7 +191,14 @@ export default function StickyHeadTable({ data, filters }) {
     });
   };
 
-
+const handleDownload = async (rowId) => {
+    try {
+      await fetchResult(rowId);
+      downloadPDF();
+    } catch (error) {
+      console.error("Error fetching result:", error);
+    }
+  };
 
   return (
    <>
@@ -229,10 +236,7 @@ export default function StickyHeadTable({ data, filters }) {
                         <Button
                           variant="contained"
                           style={{ background: "#46C35F", color: "#fff" }}
-                          onClick={async (e) => {
-                               await fetchResult(row.id)
-                            downloadPDF(e)
-                          }}
+                          onClick={() => handleDownload(row.id)}
                         >
                           Download Result
                         </Button>
@@ -248,9 +252,11 @@ export default function StickyHeadTable({ data, filters }) {
       </TableContainer>
     </Paper>
     
-    <div>
-      <Document ref={pdfRef} data={studentData} />
-    </div>
+   {showDoc && (
+        <div>
+          <Document ref={pdfRef} data={studentData} />
+        </div>
+      )}
     
   </> 
   );
