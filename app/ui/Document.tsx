@@ -17,6 +17,11 @@ interface DocumentProps {
       id: string;
       result: any[];
       cummulative: any[];
+      firstname: string;
+      surname: string;
+      level: string;
+      reg_no: string;
+      session: string;
     };
   };
 }
@@ -29,8 +34,8 @@ const Document: React.ForwardRefRenderFunction<
   const [cummulatives, setCummulatives] = useState<any[]>([]);
 
   useEffect(() => {
-    setResults(data?.data?.result || []);
-    setCummulatives(data?.data?.cummulative || []);
+    setResults(data?.data?.result ?? []);
+    setCummulatives(data?.data?.cummulative ?? []);
   }, [data?.data?.id]);
 
   return (
@@ -54,24 +59,26 @@ const Document: React.ForwardRefRenderFunction<
           </p>
         </div>
         <div>
-         {data && <Image
-            src={data.profile_picture}
-            height={100}
-            width={100}
-            alt="Profile"
-          />}
+          {data && data.profile_picture && (
+            <Image
+              src={data.profile_picture}
+              height={100}
+              width={100}
+              alt="Profile"
+            />
+          )}
         </div>
       </div>
-      <div>
+      <div className="flex justify-between items-center mt-6">
         <div>
           <p>
-            Name: {data?.firstname} {data?.surname}
+            Name: {data?.data?.firstname} {data?.surname}
           </p>
-          <p>Level: {data?.level}</p>
+          <p>Level: {data?.data?.level}</p>
         </div>
         <div>
-          <p>Reg No: {data?.reg_no}</p>
-          <p>Session: {data?.session}</p>
+          <p>Reg No: {data?.data?.reg_no}</p>
+          <p>Session: {data?.data?.session}</p>
         </div>
       </div>
 
