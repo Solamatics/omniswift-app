@@ -6,7 +6,7 @@ import ResultTable from "@/app/ui/ResultTable";
 import UnitTable from "@/app/ui/UnitTable";
 
 interface DocumentProps {
-  data: {
+  data?: {
     firstname: string;
     surname: string;
     level: string;
@@ -54,12 +54,12 @@ const Document: React.ForwardRefRenderFunction<
           </p>
         </div>
         <div>
-          <Image
-            src={data?.profile_picture}
+         {data && <Image
+            src={data.profile_picture}
             height={100}
             width={100}
             alt="Profile"
-          />
+          />}
         </div>
       </div>
       <div>

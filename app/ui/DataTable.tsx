@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef,MouseEvent } from "react";
 import {
   Paper,
   Button,
@@ -121,11 +121,11 @@ const useAsyncData = (getDataFunction: () => Promise<ApiAge[]>) => {
   return data;
 };
 
-export default function StickyHeadTable({ data, filters }) {
+export default function StickyHeadTable({ _, filters }:any) {
   const [filteredData, setFilteredData] = useState<ApiAge[]>([]);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
-  const [studentData, setStudentData] = useState(null)
+  const [studentData, setStudentData] = useState()
   const [showDoc, setShowDoc] = useState(false)
   
 
@@ -159,7 +159,7 @@ export default function StickyHeadTable({ data, filters }) {
 
 
 
-  const downloadPDF = (e) => {
+  const downloadPDF = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const input = pdfRef.current;
     html2canvas(input).then((canvas) => {
@@ -184,14 +184,6 @@ export default function StickyHeadTable({ data, filters }) {
     });
   };
 
-const handleDownload = async (rowId) => {
-    try {
-      await fetchResult(rowId);
-      downloadPDF();
-    } catch (error) {
-      console.error("Error fetching result:", error);
-    }
-  };
 
   return (
    <>
